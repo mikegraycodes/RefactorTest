@@ -7,7 +7,7 @@ namespace ClearBank.DeveloperTest.Domain
 {
     public class Account
     {
-        public string AccountNumber { get; private set; }
+        public string AccountNumber { get; }
         public decimal Balance { get; private set; }
         public AccountStatus Status { get; private set; }
         public List<PaymentScheme> AllowedPaymentSchemes { get; private set; }
@@ -55,7 +55,7 @@ namespace ClearBank.DeveloperTest.Domain
             Status = AccountStatus.Disabled;
         }
 
-        public void AllowFasterPayments()
+        public void EnableFasterPayments()
         {
             if (!AllowedPaymentSchemes.Contains(PaymentScheme.FasterPayments)) AllowedPaymentSchemes.Add(PaymentScheme.FasterPayments);
         }
@@ -65,7 +65,7 @@ namespace ClearBank.DeveloperTest.Domain
             var fasterPayments = AllowedPaymentSchemes.RemoveAll(x => x == PaymentScheme.FasterPayments);
         }
 
-        public void AllowBacsPayments()
+        public void EnableBacsPayments()
         {
             if (!AllowedPaymentSchemes.Contains(PaymentScheme.Bacs)) AllowedPaymentSchemes.Add(PaymentScheme.Bacs);
         }
@@ -75,7 +75,7 @@ namespace ClearBank.DeveloperTest.Domain
             var bacsPayments = AllowedPaymentSchemes.RemoveAll(x => x == PaymentScheme.Bacs);
         }
 
-        public void AllowChapsPayments()
+        public void EnableChapsPayments()
         {
             if (!AllowedPaymentSchemes.Contains(PaymentScheme.Chaps)) AllowedPaymentSchemes.Add(PaymentScheme.Chaps);
         }
